@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <div class="mx-auto py-4">
             <div class="flex flex-wrap font-bold text-gray-100">
                 <div class="text-gray-900 text-xl">Youtube videos</div>
@@ -21,9 +22,12 @@
             </div>
         </div>
         <div class="flex flex-wrap mb-4">
-            <div class="my-1 px-1 w-full md:w-1/2 lg:w-1/2">
-                <div class="text-xl text-gray-900">Video Title</div>
-                <iframe class="w-full h-60" src="https://www.youtube.com/embed/LjpGilXJOuY?autoplay=0"  frameborder="0" allowfullscreen></iframe>
+            <div 
+              v-for="video in videoStore.videos"
+              :key="video"
+            class="my-1 px-1 w-full md:w-1/2 lg:w-1/2">
+                <div class="text-xl text-gray-900">{{ video.title }}</div>
+                <iframe class="w-full h-60" :src="video.url"  frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -31,6 +35,18 @@
 
 <script setup>
  import RouterLinkButton from '../../../components/global/RouterLinkButton.vue'
+ import { useVideoStore } from '../../../store/video-store';
+ import { onMounted } from 'vue';
+ import { useUserStore } from '../../../store/user-store';
+
+ const videoStore=useVideoStore()
+ const userStore=useUserStore()
+
+ onMounted(()=>{
+    
+    videoStore.fetchVideosByUserId(userStore.id)
+ })
+
 
     
 </script>

@@ -62,6 +62,7 @@
 </template>
 <script setup>
   import { ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import TextInput from '../../components/global/TextInput.vue';
   import SubmitFormButton from '../../components/global/SubmitFormButton.vue';
   import Swal from '../../sweetalert2.js';
@@ -69,7 +70,7 @@
   import axios from 'axios';
   import {useSongStore} from '../../store/song-store'
     
-  
+  const router=useRouter()
   const userStore= useUserStore()
   const songStore= useSongStore()
 
@@ -102,7 +103,10 @@
 
        songStore.fetchSongsByUserId(userStore.id)
 
-      
+       setTimeout(() => {
+        router.push('/account/profile')
+       }, 1000); 
+       
 
     }catch(err){
         errors.value=err.response.data.errors

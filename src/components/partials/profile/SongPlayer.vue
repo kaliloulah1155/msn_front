@@ -7,17 +7,16 @@
 
 <script setup>
 import 'aplayer/dist/APlayer.min.css';
-import { onMounted } from 'vue';
+import { onMounted,reactive } from 'vue';
 import APlayer from 'aplayer';
 import { useSongStore } from '../../../store/song-store';
 const songStore=useSongStore()
-let songsList=[]
+let songsList=reactive([])
 
   onMounted(()=>{
-    mapSongs() // mapSongs() loading before thePlayer()
-    thePlayer()
-    
+    mapSongs()
   })
+  
 
   const mapSongs=()=>{
     let newSongs=songStore.songs.map((song)=>{
@@ -28,11 +27,16 @@ let songsList=[]
             cover: '/images/music.png'
         }
     })
-    for (let i = 0; i < newSongs.length; i++) {
-        songsList.push(newSongs[i]); 
-    }
-  }
 
+        for (let i = 0; i < newSongs.length; i++) {
+          songsList.push(newSongs[i]); 
+        }   
+        thePlayer()
+        
+    
+
+  }
+   
   const thePlayer=()=>{
        new APlayer({
             container: document.getElementById('aplayer'),
