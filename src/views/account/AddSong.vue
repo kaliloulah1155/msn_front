@@ -104,7 +104,7 @@
        songStore.fetchSongsByUserId(userStore.id)
 
        setTimeout(() => {
-        router.push('/account/profile')
+        router.push('/account/profile/'+userStore.id)
        }, 1000); 
        
 

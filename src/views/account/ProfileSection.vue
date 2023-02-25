@@ -3,7 +3,7 @@
         <div class="w-1/3">
            <img
             class="w-full rounded-lg h-auto shadow-lg"
-            :src="userStore.image"
+            :src="profileStore.image"
             alt="Profile Pic"
            >
         </div>
@@ -11,13 +11,13 @@
             <div class="flex">
                 <div class="w-1/2">
                     <h1 class="text-2xl md:text-4xl text-left text-gray-900 ">
-                        {{ userStore.firstName }} {{ userStore.lastName }} 
+                        {{ profileStore.firstName }} {{ profileStore.lastName }} 
                     </h1> 
                     <span class="text-md text-gray-700">
-                        <i><b>{{ userStore.location }}</b></i>
+                        <i><b>{{ profileStore.location }}</b></i>
                     </span>   
                 </div>
-                <div class="w-1/2 mt-2">
+                <div class="w-1/2 mt-2" v-if="userStore.id==route.params.id">
                   
                   <RouterLinkButton 
                     btn-text="Edit profile"
@@ -33,8 +33,9 @@
     <SongsSection />
     <YoutubeVideosSection />
     <PostsSection />
-</template>
+</template>   
 <script setup>
+import { onMounted } from 'vue'
  import RouterLinkButton from '../../components/global/RouterLinkButton.vue'
  import ProfileInfoSection from '../../components/partials/profile/ProfileInfoSection.vue'
  import ProfileAboutSection from '../../components/partials/profile/ProfileAboutSection.vue'
@@ -42,7 +43,15 @@
  import YoutubeVideosSection from '../../components/partials/profile/YoutubeVideosSection.vue'
  import PostsSection from '../../components/partials/profile/PostsSection.vue'
  import { useUserStore } from '../../store/user-store'
+ import { useProfileStore } from '../../store/profile-store'
+ import { useRoute } from 'vue-router'
 
+ const route = useRoute()
  const userStore=useUserStore()
+ const profileStore=useProfileStore()
+
+ onMounted(async()=>{
+     await profileStore.fetchProfileById(route.params.id)
+ })
 
 </script>

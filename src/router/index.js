@@ -38,7 +38,7 @@ const routes=[
         component:AccountView,
         children:[
            {
-             path:'profile',
+             path:'profile/:id',
              name:'profileSection',
              component:ProfileSection
            },
@@ -73,7 +73,7 @@ const routes=[
        component:CreatePost
      },
      {
-        path:'edit-post',
+        path:'edit-post/:id',
         name:'editPost',
         component:EditPost
       },
@@ -83,7 +83,7 @@ const routes=[
          component:PostsSection
        },
        {
-          path:'post-by-id',
+          path:'post-by-id/:id',
           name:'postById',
           component:PostById
         }

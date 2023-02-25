@@ -5,7 +5,7 @@
             <div class="flex flex-wrap font-bold text-gray-100">
                 <div class="text-gray-900 text-xl">Youtube videos</div>
                 <div class="bg-green-500 w-full h-1"></div>
-                <div class="w-full mt-4">
+                <div class="w-full mt-4" v-if="userStore.id == route.params.id">
                     <RouterLinkButton 
                         class="ml-2"
                         btn-text="Delete Youtube Video"
@@ -38,13 +38,15 @@
  import { useVideoStore } from '../../../store/video-store';
  import { onMounted } from 'vue';
  import { useUserStore } from '../../../store/user-store';
+ import { useRoute } from 'vue-router';
 
  const videoStore=useVideoStore()
  const userStore=useUserStore()
+ const route=useRoute()
 
- onMounted(()=>{
+ onMounted(async()=>{
     
-    videoStore.fetchVideosByUserId(userStore.id)
+    await videoStore.fetchVideosByUserId(route.params.id)
  })
 
 

@@ -14,7 +14,10 @@ const songStore=useSongStore()
 let songsList=reactive([])
 
   onMounted(()=>{
-    mapSongs()
+   
+    setTimeout(() => {
+      mapSongs()
+    }, 500);
   })
   
 
