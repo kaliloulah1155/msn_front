@@ -16,15 +16,18 @@
              pb-4
            "
          >
-         <div class="mb-4">
-            <div class="mb-4">
-               Quick links
+         <div>
+            <div class="mb-4 text-lg underline">
+               <b>Quick links</b>
             </div>
+            
             <router-link to="/" class="block mb-2">Home</router-link>
+            <router-link to="/login" class="block mb-2">Login</router-link>
+            <router-link to="/register" class="block mb-2">Register</router-link>
          </div>
          <div class="mb-4">
-            <div class="mb-4">
-               About our company
+            <div class="mb-4 text-lg underline">
+               Our company
             </div>
             <p class="mb-4 leading-normal">
                 123 Main Street <br/>
@@ -46,6 +49,8 @@
              items-center
              text-sm
              py-6
+             pl-6
+             pr-4
              
            "
          >

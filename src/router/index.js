@@ -13,27 +13,43 @@ import CreatePost from '../views/account/CreatePost.vue'
 import EditPost from '../views/account/EditPost.vue'
 import PostsSection from '../views/account/PostsSection.vue'
 import PostById from '../views/account/PostById.vue'
+ 
+import {useUserStore} from '../store/user-store'
 
 
 
 const routes=[
     {
         path:'/',
+        beforeEnter(to, from, next) {
+          useUserStore().id ? next('/account/profile/'+useUserStore().id) : next();
+        },
         name:'home',
         component:HomeView
     },
     {
         path:'/register',
+        beforeEnter(to, from, next) {
+          useUserStore().id ? next('/account/profile/'+useUserStore().id) : next();
+        },
         name:'register',
         component:RegisterView
     },
     {
         path:'/login',
+        beforeEnter(to, from, next) {
+          useUserStore().id ? next('/account/profile/'+useUserStore().id) : next();
+         // console.log('useUserStore().id  ',useUserStore().id)
+          //next();
+        },
         name:'login',
         component:LoginView
     },
     {
         path:'/account',
+        beforeEnter(to, from, next) {
+          useUserStore().id ? next() : next('login');
+        },
         name:'account',
         component:AccountView,
         children:[
@@ -94,4 +110,5 @@ const router=createRouter({
     history:createWebHistory(),
     routes
 })
+ 
 export default router

@@ -55,6 +55,7 @@ export const useUserStore=defineStore('user',{
             this.$state.email=null
             this.$state.location=null
             this.$state.description=null
+            this.$state.image=null
         }
     },
     persist:true

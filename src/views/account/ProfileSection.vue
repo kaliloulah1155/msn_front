@@ -1,5 +1,6 @@
 <template>
-    <div class="container max-w-4xl mx-auto flex mt-3">
+    <div class="p-2">
+        <div class="container max-w-4xl mx-auto flex mt-3">
         <div class="w-1/3">
            <img
             class="w-full rounded-lg h-auto shadow-lg"
@@ -33,6 +34,7 @@
     <SongsSection />
     <YoutubeVideosSection />
     <PostsSection />
+    </div>
 </template>   
 <script setup>
 import { onMounted } from 'vue'

@@ -141,7 +141,7 @@ const createPost=async()=>{
         Swal.fire(
          'New post created!',
          `The post you created was called ${title.value}`,
-         'warning'
+         'success'
        )
 
         await userStore.fetchUser()

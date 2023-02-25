@@ -1,5 +1,5 @@
 <template>
-    <div id="centerCallToAction" class="max-w-4xl">
+    <div id="centerCallToAction" class="max-w-5xl">
        <div class="px-4 md:w-3/4 lg:w-2/3 mx-auto text-center">
             <h1 class="text-4xl sm:text-5xl md:text-5xl leading-tight text-center text-gray-100 mb-3">
                 <b>Music Social Network</b>

@@ -38,6 +38,7 @@ export const useProfileStore=defineStore('profile',{
             this.$state.email=null
             this.$state.location=null
             this.$state.description=null
+            this.$state.image=null
         }
     },
     persist:true

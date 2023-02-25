@@ -1,4 +1,5 @@
 <template>
+     <TopNavigation />
     <div id="Login">
        <div class="w-full p-6 flex justify-center items-center">
            <div class="w-2/5 wax-w-xs">
@@ -52,6 +53,7 @@
 
 <script setup>
 import TextInput from '../components/global/TextInput.vue';
+import TopNavigation from '../components/structure/TopNavigation.vue';
 import axios from 'axios'
 import { ref } from 'vue'
 import {useUserStore} from '../store/user-store'
@@ -78,8 +80,8 @@ const login=async()=>{
             email:email.value,
             password:password.value,
         })
-     
-         userStore.setUserDetails(res)
+        axios.defaults.headers.common['Authorization']='Bearer '+res.data.token
+        userStore.setUserDetails(res)
         await profileStore.fetchProfileById(userStore.id)
         await songStore.fetchSongsByUserId(userStore.id)
         await postStore.fetchPostsByUserId(userStore.id)

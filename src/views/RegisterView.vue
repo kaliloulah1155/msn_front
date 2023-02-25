@@ -1,4 +1,5 @@
 <template>
+     <TopNavigation />
     <div id="Register">
         <div class="w-full p-6 flex justify-center items-center">
             <div class="w-2/5 wax-w-xs">
@@ -68,6 +69,7 @@
 
 <script setup>
 import TextInput from '../components/global/TextInput.vue';
+import TopNavigation from '../components/structure/TopNavigation.vue';
 import { ref } from 'vue';
 import axios from 'axios';
 import { useUserStore } from '../store/user-store';
@@ -102,6 +104,7 @@ import { useRouter } from 'vue-router';
                 password:password.value,
                 password_confirmation:confirmPassword.value
             })
+            axios.defaults.headers.common['Authorization']='Bearer '+res.data.token
             userStore.setUserDetails(res)
             await profileStore.fetchProfileById(userStore.id)
             await songStore.fetchSongsByUserId(userStore.id)

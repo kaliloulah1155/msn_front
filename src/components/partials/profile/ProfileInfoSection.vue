@@ -13,7 +13,7 @@
        py-1
       "
     >
-       Number of songs {{ songStore.songs.length }}
+       Number of songs {{  songStore.songs ? songStore.songs.length : 0 }}
     </div>
 </template>
 
