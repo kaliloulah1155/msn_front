@@ -79,6 +79,16 @@
                         color="green"
                        
                         />
+
+                    <RouterLinkButton
+                         v-if="userStore.id"
+                         @click="open=!open"
+                        class="w-full text-gray-100 text-center font-bold mt-2"
+                        btn-text="Table"
+                        color="green"
+                        url="/datatable"
+                       
+                        />
                   
                 <RouterLinkButton
                     @click="open=!open"

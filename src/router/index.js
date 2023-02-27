@@ -13,8 +13,14 @@ import CreatePost from '../views/account/CreatePost.vue'
 import EditPost from '../views/account/EditPost.vue'
 import PostsSection from '../views/account/PostsSection.vue'
 import PostById from '../views/account/PostById.vue'
- 
 import {useUserStore} from '../store/user-store'
+
+//OTHERS 
+import DataTableView from '../components/others/Dtable.vue'
+
+/////
+
+
 
 
 
@@ -104,7 +110,12 @@ const routes=[
           component:PostById
         }
     ]
-   }
+   },
+   {
+        path:'/datatable',
+        name:'datatable',
+        component:DataTableView
+    },
 ]
 const router=createRouter({
     history:createWebHistory(),
